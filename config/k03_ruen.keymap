@@ -3,6 +3,7 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/pointing.h>
 
 / {
     behaviors {
@@ -11,6 +12,20 @@
             label = "ENC_VOL";
             #sensor-binding-cells = <0>;
             bindings = <&kp C_VOL_UP>, <&kp C_VOL_DN>;
+        };
+
+        ScrollRight: ScrollRight {
+            compatible = "zmk,behavior-sensor-rotate";
+            label = "SCROLLRIGHT";
+            #sensor-binding-cells = <0>;
+            bindings = <&msc SCRL_UP>, <&msc SCRL_DOWN>;
+        };
+
+        ScrollLeft: ScrollLeft {
+            compatible = "zmk,behavior-sensor-rotate";
+            label = "SCROLLLEFT";
+            #sensor-binding-cells = <0>;
+            bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
         };
     };
 
@@ -100,12 +115,12 @@
 
             display-name = "Base";
             sensor-bindings =
+                <&ScrollLeft>,
+                <&ScrollRight>,
                 <&enc_vol>,
                 <&enc_vol>,
                 <&enc_vol>,
-                <&enc_vol>,
-                <&inc_dec_kp K_SCROLL_DOWN K_SCROLL_UP>,
-                <&inc_dec_kp K_SCROLL_UP K_SCROLL_DOWN>;
+                <&enc_vol>;
         };
 
         ru {
@@ -119,8 +134,8 @@
             >;
 
             sensor-bindings =
-                <&enc_vol>,
-                <&enc_vol>,
+                <&ScrollLeft>,
+                <&ScrollRight>,
                 <&enc_vol>,
                 <&enc_vol>,
                 <&enc_vol>,
