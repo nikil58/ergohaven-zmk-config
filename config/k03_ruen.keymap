@@ -18,14 +18,14 @@
             compatible = "zmk,behavior-sensor-rotate";
             label = "SCROLLRIGHT";
             #sensor-binding-cells = <0>;
-            bindings = <&msc SCRL_UP>, <&msc SCRL_DOWN>;
+            bindings = <&msc MOVE_Y(5)>, <&msc MOVE_Y(-5)>;
         };
 
         ScrollLeft: ScrollLeft {
             compatible = "zmk,behavior-sensor-rotate";
             label = "SCROLLLEFT";
             #sensor-binding-cells = <0>;
-            bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
+            bindings = <&msc MOVE_Y(-5)>, <&msc MOVE_Y(5)>;
         };
     };
 
