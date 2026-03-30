@@ -14,18 +14,22 @@
             bindings = <&kp C_VOL_UP>, <&kp C_VOL_DN>;
         };
 
-        ScrollRight: ScrollRight {
+        ev_scrl_left: ev_scrl_left {
             compatible = "zmk,behavior-sensor-rotate";
-            label = "SCROLLRIGHT";
+            label = "EV_SCRL_LEFT";
             #sensor-binding-cells = <0>;
-            bindings = <&msc MOVE_Y(5)>, <&msc MOVE_Y(-5)>;
+            bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
+
+            tap-ms = <50>;
         };
 
-        ScrollLeft: ScrollLeft {
+        ev_scrl_right: ev_scrl_right {
             compatible = "zmk,behavior-sensor-rotate";
-            label = "SCROLLLEFT";
+            label = "EV_SCRL_RIGHT";
             #sensor-binding-cells = <0>;
-            bindings = <&msc MOVE_Y(-5)>, <&msc MOVE_Y(5)>;
+            bindings = <&msc SCRL_UP>, <&msc SCRL_DOWN>;
+
+            tap-ms = <50>;
         };
     };
 
@@ -115,8 +119,8 @@
 
             display-name = "Base";
             sensor-bindings =
-                <&ScrollLeft>,
-                <&ScrollRight>,
+                <&inc_dec_kp DOWN UP>,
+                <&inc_dec_kp UP DOWN_ARROW>,
                 <&enc_vol>,
                 <&enc_vol>,
                 <&enc_vol>,
@@ -134,8 +138,8 @@
             >;
 
             sensor-bindings =
-                <&ScrollLeft>,
-                <&ScrollRight>,
+                <&inc_dec_kp DOWN_ARROW UP>,
+                <&inc_dec_kp UP DOWN>,
                 <&enc_vol>,
                 <&enc_vol>,
                 <&enc_vol>,
